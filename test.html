@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+		<title></title>
+  </head>
+	<body>
+		<h1 id="heading">Boring Web Page</h1>
+		<button id="clicker">Boring button</button>
+	
+		<script>
+		var clickerButton = document.getElementById("clicker");
+		var onButtonClick = function() {
+			clickerButton.textContent = "Oh, you clicked me!";
+		};
+		clickerButton.addEventListener("click", onButtonClick);
+		</script>
+	</body>
+</html>

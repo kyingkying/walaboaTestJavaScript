@@ -15,15 +15,16 @@
 
 		var w = 1280, h = 800;
 	
-		var circleData = [{"x_axis":50, "y_axis":50, "radius": 20, "color": "red"}];
+		var color = ["red", "blue", "green"];
+		var circleData = [];
+		for (var i=0; i<100; i++){
+			circleData.push({"x_axis": Math.random()*w, "y_axis": Math.random()*h, "radius": 20, "color": color[Math.floor(Math.random()*3)]});
+		}
 
 		var svg = d3.select("#body")
 				.append("svg")
 				.attr("width", w)
 				.attr("height", h);
-
-		var node = {radius: 10},
-				color = d3.rgb("violet");
 
 		var circle =
 			 svg.selectAll("circle")
@@ -31,12 +32,18 @@
 			 .enter().append("circle");
 		
 		var onButtonClick = function() {
-			clickerButton.textContent = "Oh, you clicked me!";
+			if (clickerButton.textContent == "Boring button"){
+				clickerButton.textContent = "Oh, you clicked me!";
 
-			circle.attr("cx", function(d) {return d.x_axis;})
-						.attr("cy", function(d) {return d.y_axis;})
-						.attr("r", function(d) {return d.radius;})
-						.style("fill", function(d) {return d.color;});
+				circle.attr("cx", function(d) {return d.x_axis;})
+							.attr("cy", function(d) {return d.y_axis;})
+							.attr("r", function(d) {return d.radius;})
+							.style("fill", function(d) {return d.color;});
+			}
+			else{
+				clickerButton.textContent = "Boring button";
+
+			}
 		}
 
 		clickerButton.addEventListener("click", onButtonClick);

@@ -15,7 +15,7 @@
 
 		var w = 1280, h = 800;
 	
-		var color = ["red", "blue", "green"];
+		var color = ["#1f77b4", "#ff7f0e", "#2ca02c"];
 		var circleData = [];
 		for (var i=0; i<100; i++){
 			circleData.push({"x_axis": Math.random()*w, "y_axis": Math.random()*h, "radius": 20, "color": color[Math.floor(Math.random()*3)]});
@@ -42,11 +42,14 @@
 			}
 			else{
 				clickerButton.textContent = "Boring button";
-
+				
+				var rand = d3.range(100).map(function() {return {width: Math.random()*w, height: Math.random()*h};});
+				circle.transition().duration(10000).attr("cx", function(d, i) {return rand[i].width})
+																					 .attr("cy", function(d, i) {return rand[i].height});
 			}
 		}
 
 		clickerButton.addEventListener("click", onButtonClick);
-		</script>
+		</script>`
 	</body>
 </html>

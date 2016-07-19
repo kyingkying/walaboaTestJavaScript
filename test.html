@@ -38,8 +38,10 @@
 							.style("fill", function(d) {return d.color;});
 			}
 			else{
+				clickerButton.textContent = "Click me again!!";
+
 				var rand = d3.range(100).map(function() {return {width: Math.random()*w, height: Math.random()*h};});
-				circle.transition().duration(10000).attr("cx", function(d, i) {return rand[i].width})
+				circle.transition().duration(1000).attr("cx", function(d, i) {return rand[i].width})
 																					 .attr("cy", function(d, i) {return rand[i].height});
 			}
 		}
